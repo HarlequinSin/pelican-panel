@@ -8,7 +8,7 @@
 # ================================
 # Stage 1-1: Composer Install
 # ================================
-FROM php:8.2-fpm-alpine
+FROM --platform=$TARGETOS/$TARGETARCH php:8.2-cli-alpine AS composer
 
 WORKDIR /build
 
@@ -58,7 +58,7 @@ RUN yarn run build
 # ================================
 # Stage 5: Build Final Application Image
 # ================================
-FROM --platform=$TARGETOS/$TARGETARCH localhost:5000/base-php:$TARGETARCH AS final
+FROM --platform=$TARGETOS/$TARGETARCH php:8.2-fpm-alpine AS final
 
 WORKDIR /var/www/html
 
