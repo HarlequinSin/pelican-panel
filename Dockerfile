@@ -8,7 +8,7 @@
 # ================================
 # Stage 1-1: Composer Install
 # ================================
-FROM --platform=$TARGETOS/$TARGETARCH localhost:5000/base-php:$TARGETARCH AS composer
+FROM php:8.2-fpm-alpine
 
 WORKDIR /build
 
