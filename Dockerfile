@@ -19,8 +19,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN apk add --no-cache bash git unzip zlib-dev libzip-dev libpng-dev
 RUN docker-php-ext-install pdo pdo_mysql bz2 zip
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-
 # Copy bare minimum to install Composer dependencies
 COPY composer.json composer.lock ./
 
